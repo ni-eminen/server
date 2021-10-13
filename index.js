@@ -29,7 +29,7 @@ app.post('/api/scores', (request, response) => {
   }
 
   const score = new Score({
-    user: body.name,
+    name: body.name,
     score: body.score
   })
 
