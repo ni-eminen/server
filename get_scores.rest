@@ -1,0 +1,12 @@
+# DELETE http://localhost:3001/api/scores/1
+
+GET http://localhost:3001/api/scores
+
+
+# POST http://localhost:3001/api/scores
+# Content-Type: application/json
+
+# {
+#     "name": "Matias",
+#     "score": 500
+# }
