@@ -1,9 +1,9 @@
-# DELETE http://localhost:3001/api/scores/1
+# DELETE https://typingspeedserver.herokuapp.com/api/scores/2
 
-GET http://localhost:3001/api/scores
+# GET https://typingspeedserver.herokuapp.com/api/scores
 
 
-# POST http://localhost:3001/api/scores
+# POST https://typingspeedserver.herokuapp.com/api/scores
 # Content-Type: application/json
 
 # {

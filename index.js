@@ -22,7 +22,7 @@ app.get('/api/scores', (req, res) => {
 app.post('/api/scores', (request, response) => {
   const body = request.body
 
-  if (!body.name || !body.score) {
+  if (!body.user || !body.score) {
     return response.status(400).json({ 
       error: 'content missing' 
     })
