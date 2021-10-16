@@ -61,6 +61,17 @@ app.post('/api/scores', (request, response) => {
   })
 })
 
+app.post('/api/users/login', (request, response) => {
+  const body = request.body
+
+  let password = body.password
+  let username = body.username
+
+  let hashed = User.find({username: username}).then(result => {
+    return response.json(result)
+  })
+})
+
 app.delete('/api/scores/:id', (request, response) => {
   const id = Number(request.params.id)
   scores = scores.filter(score => score.id !== id)
@@ -74,16 +85,8 @@ app.get('/api/users', (request, response) => {
   })
 })
 
-app.post('api/users/login', (request, response) => {
-  body = request.body
-
-  let password = body.password
-  let username = body.username
-
-  let hashed = User.find({username: username}).then(result => result)
-
-  console.log(hashed)
-
+app.get('/api/users/login', (request, response) => {
+  response.send('<h2>Hello</h2>')
 })
 
 const PORT = process.env.PORT || 3001
