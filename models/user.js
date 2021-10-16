@@ -1,5 +1,17 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs')
+require('dotenv').config()
+const bcrypt = require('bcryptjs') 
+
+
+const url = process.env.MONGODB_URI
+
+mongoose.connect(url)
+    .then(result => {
+        console.log('connected to MongoDB')
+    })
+    .catch(e => {
+        console.log('error connecting to MongoDB', e.message)
+    })
 
 const UserSchema = new mongoose.Schema({
     username: String,
@@ -28,5 +40,13 @@ UserSchema.pre("save", function (next) {
       return next()
     }
   })
+
+  UserSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        returnedObject.id = returnedObject._id.toString()
+        delete returnedObject._id
+        delete returnedObject.__v
+    }
+})
 
 module.exports = mongoose.model('User', UserSchema)
