@@ -10,3 +10,11 @@
 #     "name": "Matias",
 #     "score": 500
 # }
+
+POST https://typingspeedserver.herokuapp.com/api/users
+Content-Type: application/json
+
+{
+    "username": "masa",
+    "password": "123"
+}
