@@ -67,7 +67,8 @@ app.delete('/api/scores/:id', (request, response) => {
 })
 
 app.post('/api/users', (request, response) => {
-  body = request.body
+  console.log("yritetään postata", response.body)
+  const body = request.body
 
   if (!body.username || !body.password) {
     return response.status(400).json({ 
@@ -88,13 +89,11 @@ app.post('/api/users', (request, response) => {
     })
 })
 
-const createUser = (username, password, callback) => {
-
-
-  user.save().then(u => {
-    response
+app.get('/api/users', (request, response) => {
+  User.find({}).then(result => {
+    response.json(result)
   })
-}
+})
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
