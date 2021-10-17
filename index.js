@@ -67,9 +67,17 @@ app.post('/api/users/login', (request, response) => {
   let password = body.password
   let username = body.username
 
-  let hashed = User.find({username: username}).then(result => {
-    return response.json(result)
-  })
+  // fetch the user and test password verification
+  User.findOne({ username: username }, function(err, user) {
+    if (err) throw err;
+    
+    // test a matching password
+    user.comparePassword(password, function(err, isMatch) {
+        if (err) throw err;
+        console.log(password, isMatch); // -&gt; Password123: true
+        isMatch ? response.send(true) : response.send(false)
+    });
+  });
 })
 
 app.delete('/api/scores/:id', (request, response) => {
