@@ -30,7 +30,7 @@ app.post('/api/users', (request, response) => {
     })
   }
 
-  password = body.password
+  let password = body.password
 
   const user = new User({
     username: body.username,
